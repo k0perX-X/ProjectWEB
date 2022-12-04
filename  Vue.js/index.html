@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.js</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/x-template" id="grid-template">
+        <table>
+            <thead>
+            <tr>
+                <th v-for="key in columns"
+                    @click="sortBy(key)"
+                    :class="{ active: sortKey == key }">
+                    {{ capitalize(key) }}
+                    <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
+              </span>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="entry in filteredHeroes">
+                <td v-for="key in columns">
+                    {{ entry[key] }}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </script>
+</head>
+<body>
+<script>
+    function count_of_lessons_day() {
+        if ($("#" + $("#day-selecter")[0].value)[0].children.length === 1) {
+            $("#dialog").find(">:first-child").text(`Количество пар в этот день: ${$("#" + $("#day-selecter")[0].value)[0].children[0].children[1].children.length - 1}`)
+            $("#dialog").show()
+        }
+    }
+
+    function disable_dialog() {
+        $("#dialog").hide()
+    }
+
+    $(function () {
+        $("#" + $("#select option:selected").val()).show();
+        $("#day-selecter").change(function () {
+            $(".timetable").remove();
+            $("#" + $(this).val()).load(`tables/${$(this).val()}.html`);
+        });
+    });
+
+</script>
+
+<dialog id="dialog" open style="display: none">
+    <p>Тест формы</p>
+    <button onclick="disable_dialog()">OK</button>
+</dialog>
+
+<h1>
+    Базовое расписание на 2 модуль
+</h1>
+
+<h2 id="count-of-lessons">
+
+</h2>
+
+<div class="select">
+    <label for="day-selecter" id="day-text" v-bind:title="message">
+        Выберите день недели:
+    </label>
+    <select id="day-selecter" onselect="display_day()">
+        <option class="day-option">Выберите вариант</option>
+        <option class="day-option" value="mon">Понедельник</option>
+        <option class="day-option" value="tue">Вторник</option>
+        <option class="day-option" value="wed">Среда</option>
+        <option class="day-option" value="thu">Четверг</option>
+        <option class="day-option" value="fri">Пятница</option>
+        <option class="day-option" value="sat">Суббота</option>
+    </select>
+</div>
+
+<script>
+    const AttrBilApp = {
+        data() {
+            return {
+                message: "Расписание для 3 подгруппы ПИ-20"
+            }
+        }
+    }
+
+    Vue.createApp(AttrBilApp).mount(".select")
+</script>
+
+<div class="tables">
+    <div id="mon" class="timetables">
+    </div>
+    <div id="tue" class="timetables">
+    </div>
+    <div id="wed" class="timetables">
+    </div>
+    <div id="thu" class="timetables">
+    </div>
+    <div id="fri" class="timetables">
+    </div>
+    <div id="sat" class="timetables">
+    </div>
+    <div id="all" class="timetables">
+    </div>
+</div>
+</body>
+</html>
