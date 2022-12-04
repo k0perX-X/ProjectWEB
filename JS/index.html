@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<script>
+    window.onload = function () {
+        let all = document.getElementById('all')
+        let count = 0
+        for (let i in Array.from(all.children)) {
+            count += all.children[i].children[1].children.length - 1
+        }
+        // console.log(count)
+        document.getElementById("count-of-lessons").innerHTML = `В этом модуле в неделю ${count} пар`
+    }
+
+    function count_of_lessons_day() {
+        let dialog = document.getElementById('dialog')
+        let day = document.getElementById("day-selecter").value
+        // console.log(day)
+        if (document.getElementById(day).children.length === 1) {
+            dialog.children[0].innerHTML =
+                `Количество пар в этот день: ${Array.from(document.getElementById(day).children)[0].children[1].children.length - 1}`
+            dialog.style.setProperty("display", 'inline-block')
+        }
+    }
+
+    function disable_dialog() {
+        let dialog = document.getElementById('dialog')
+        dialog.style.setProperty("display", 'none');
+    }
+
+    function display_day() {
+        let day = document.getElementById("day-selecter").value
+        let tables_styles = Array.from(document.getElementById("tables").children).map(table => table.style)
+        tables_styles.forEach(style => style.setProperty("display", 'none'))
+        document.getElementById(day).setProperty("display", 'block')
+    }
+</script>
+
+<dialog id="dialog" open style="display: none">
+    <p>Тест формы</p>
+    <button onclick="disable_dialog()">OK</button>
+</dialog>
+
+<h1>
+    Базовое расписание на 2 модуль
+</h1>
+
+<h2 id="count-of-lessons">
+
+</h2>
+
+<div class="select">
+    <label for="day-selecter" class="day">
+        Выберите день недели:
+    </label>
+    <select id="day-selecter" onselect="display_day()">
+        <option class="day-option">Выберите вариант</option>
+        <option class="day-option" value="mon">Понедельник</option>
+        <option class="day-option" value="tue">Вторник</option>
+        <option class="day-option" value="wed">Среда</option>
+        <option class="day-option" value="thu">Четверг</option>
+        <option class="day-option" value="fri">Пятница</option>
+        <option class="day-option" value="sat">Суббота</option>
+        <option class="day-option" value="all">Все дни</option>
+    </select>
+    <input type="button" onclick="count_of_lessons_day()" value="Количество пар в этот день">
+</div>
+
+<!--<div class="form-group">-->
+<!--    <form name="get_day" method="dialog">-->
+<!--        <h2>Выберите день недели</h2>>-->
+<!--        <select name="day" required="required">-->
+<!--            <option value="">Выберите вариант</option>-->
+<!--            <option value="mon">Понедельник</option>-->
+<!--            <option value="tue">Вторник</option>-->
+<!--            <option value="wed">Среда</option>-->
+<!--            <option value="thu">Четверг</option>-->
+<!--            <option value="fri">Пятница</option>-->
+<!--            <option value="sat">Суббота</option>-->
+<!--        </select>-->
+<!--        <input type="submit" name="submit_btn" value="Отправить">-->
+<!--    </form>-->
+<!--</div>-->
+
+<div class="tables">
+    <div id="mon" class="timetables" style="display:none">
+        <table class="timetable">
+            <caption>Понедельник</caption>
+            <tr>
+                <th>Время</th>
+                <th>Предмет</th>
+                <th>Кабинет</th>
+            </tr>
+            <tr>
+                <td>8:10</td>
+                <td>Машинное обучение (лекция)</td>
+                <td>124[2]</td>
+            </tr>
+            <tr>
+                <td>9:40</td>
+                <td>Груп. динамика и коммуник. в проф.практике прогр. инж</td>
+                <td>510[3]</td>
+            </tr>
+            <tr>
+                <td>13:10</td>
+                <td>Машинное обучение (практика)</td>
+                <td>504[3]</td>
+            </tr>
+            <tr>
+                <td>15:00</td>
+                <td>Обеспечение качества и тестирование</td>
+                <td>504[3]</td>
+            </tr>
+        </table>
+    </div>
+    <div id="tue" class="timetables" style="display:none">
+        <table class="timetable">
+            <caption>Вторник</caption>
+            <tr>
+                <th>Время</th>
+                <th>Предмет</th>
+                <th>Кабинет</th>
+            </tr>
+            <tr>
+                <td>8:10</td>
+                <td>Обеспечение качества и тестирование</td>
+                <td>102[3]</td>
+            </tr>
+            <tr>
+                <td>9:40</td>
+                <td>НИС "Разработка мобильных приложений"</td>
+                <td>504[3]</td>
+            </tr>
+            <tr>
+                <td>16:40</td>
+                <td>НИС "Аналитика в IoT"</td>
+                <td>дист.</td>
+            </tr>
+        </table>
+    </div>
+    <div id="wed" class="timetables" style="display:none">
+        <table class="timetable">
+            <caption>Среда</caption>
+            <tr>
+                <th>Время</th>
+                <th>Предмет</th>
+                <th>Кабинет</th>
+            </tr>
+            <tr>
+                <td>9:40</td>
+                <td>Обеспечение качества и тестирование</td>
+                <td>510[3]</td>
+            </tr>
+            <tr>
+                <td>11:30</td>
+                <td>Груп. динамика и коммуник. в проф.практике прогр. инж</td>
+                <td>102[3]</td>
+            </tr>
+        </table>
+    </div>
+    <div id="thu" class="timetables" style="display:none">
+        <table class="timetable">
+            <caption>Четверг</caption>
+            <tr>
+                <th>Время</th>
+                <th>Предмет</th>
+                <th>Кабинет</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td>МАЙНОР</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div id="fri" class="timetables" style="display:none">
+        <table class="timetable">
+            <caption>Пятница</caption>
+            <tr>
+                <th>Время</th>
+                <th>Предмет</th>
+                <th>Кабинет</th>
+            </tr>
+            <tr>
+                <td>9:40</td>
+                <td>Web-программирование (практ.) (МКД)</td>
+                <td>дист.</td>
+            </tr>
+            <tr>
+                <td>11:30</td>
+                <td>Web-программирование (лекция) (МКД)</td>
+                <td>дист.</td>
+            </tr>
+        </table>
+    </div>
+    <div id="sat" class="timetables" style="display:none">
+        <table class="timetable">
+            <caption>Суббота</caption>
+            <tr>
+                <th>Время</th>
+                <th>Предмет</th>
+                <th>Кабинет</th>
+            </tr>
+        </table>
+    </div>
+    <div id="all" class="timetables" style="display:none">
+        <table class="timetable">
+            <caption>Понедельник</caption>
+            <tr>
+                <th>Время</th>
+                <th>Предмет</th>
+                <th>Кабинет</th>
+            </tr>
+            <tr>
+                <td>8:10</td>
+                <td>Машинное обучение (лекция)</td>
+                <td>124[2]</td>
+            </tr>
+            <tr>
+                <td>9:40</td>
+                <td>Груп. динамика и коммуник. в проф.практике прогр. инж</td>
+                <td>510[3]</td>
+            </tr>
+            <tr>
+                <td>13:10</td>
+                <td>Машинное обучение (практика)</td>
+                <td>504[3]</td>
+            </tr>
+            <tr>
+                <td>15:00</td>
+                <td>Обеспечение качества и тестирование</td>
+                <td>504[3]</td>
+            </tr>
+        </table>
+        <table class="timetable">
+            <caption>Вторник</caption>
+            <tr>
+                <th>Время</th>
+                <th>Предмет</th>
+                <th>Кабинет</th>
+            </tr>
+            <tr>
+                <td>8:10</td>
+                <td>Обеспечение качества и тестирование</td>
+                <td>102[3]</td>
+            </tr>
+            <tr>
+                <td>9:40</td>
+                <td>НИС "Разработка мобильных приложений"</td>
+                <td>504[3]</td>
+            </tr>
+            <tr>
+                <td>16:40</td>
+                <td>НИС "Аналитика в IoT"</td>
+                <td>дист.</td>
+            </tr>
+        </table>
+        <table class="timetable">
+            <caption>Среда</caption>
+            <tr>
+                <th>Время</th>
+                <th>Предмет</th>
+                <th>Кабинет</th>
+            </tr>
+            <tr>
+                <td>9:40</td>
+                <td>Обеспечение качества и тестирование</td>
+                <td>510[3]</td>
+            </tr>
+            <tr>
+                <td>11:30</td>
+                <td>Груп. динамика и коммуник. в проф.практике прогр. инж</td>
+                <td>102[3]</td>
+            </tr>
+        </table>
+        <table class="timetable">
+            <caption>Четверг</caption>
+            <tr>
+                <th>Время</th>
+                <th>Предмет</th>
+                <th>Кабинет</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td>МАЙНОР</td>
+                <td></td>
+            </tr>
+        </table>
+        <table class="timetable">
+            <caption>Пятница</caption>
+            <tr>
+                <th>Время</th>
+                <th>Предмет</th>
+                <th>Кабинет</th>
+            </tr>
+            <tr>
+                <td>9:40</td>
+                <td>Web-программирование (практ.) (МКД)</td>
+                <td>дист.</td>
+            </tr>
+            <tr>
+                <td>11:30</td>
+                <td>Web-программирование (лекция) (МКД)</td>
+                <td>дист.</td>
+            </tr>
+        </table>
+        <table class="timetable">
+            <caption>Суббота</caption>
+            <tr>
+                <th>Время</th>
+                <th>Предмет</th>
+                <th>Кабинет</th>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
