@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>HTML</title>
+    <title>React-Redux</title>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <link rel="stylesheet" href="styles.css">
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -43,6 +43,10 @@
 </div>
 
 <script defer type="text/babel">
+    import React from './node_modules/react'
+    import ReactDOM from './node_modules/react-dom/client'
+
+    import { Provider } from './node_modules/react-redux'
     class Clock extends React.Component {
         constructor(props) {
             super(props);
@@ -51,7 +55,7 @@
 
         handleClick = () => {
             this.setState({date: new Date()}); // изменение состояния
-            setInterval(this.handleClick, 100);
+            setInterval(this.handleClick, 1000);
         }
 
         render() {
@@ -74,7 +78,7 @@
             //     "sat"
             // ];
             const n = this.state.date.getDay(); // получение данных о состоянии
-            setInterval(this.handleClick, 100);
+            // setInterval(this.handleClick, 100);
             // const daySelecter = document.getElementById('day-selecter');
             // daySelecter.setAttribute("value", )
             return (
