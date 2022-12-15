@@ -64,19 +64,8 @@
                 'Пятница',
                 'Суббота'
             ];
-            // const days_select = [
-            //     "",
-            //     "mon",
-            //     'tue',
-            //     "wed",
-            //     "thu",
-            //     "fri",
-            //     "sat"
-            // ];
             const n = this.state.date.getDay(); // получение данных о состоянии
-            setInterval(this.handleClick, 100);
-            // const daySelecter = document.getElementById('day-selecter');
-            // daySelecter.setAttribute("value", )
+            setInterval(this.handleClick, 1000);
             return (
                 <div>
                     <p>
@@ -93,22 +82,6 @@
     const root = ReactDOM.createRoot(mountNode);
     root.render(<Clock/>); // рендер
 </script>
-
-<!--<div class="form-group">-->
-<!--    <form name="get_day" method="dialog">-->
-<!--        <h2>Выберите день недели</h2>>-->
-<!--        <select name="day" required="required">-->
-<!--            <option value="">Выберите вариант</option>-->
-<!--            <option value="mon">Понедельник</option>-->
-<!--            <option value="tue">Вторник</option>-->
-<!--            <option value="wed">Среда</option>-->
-<!--            <option value="thu">Четверг</option>-->
-<!--            <option value="fri">Пятница</option>-->
-<!--            <option value="sat">Суббота</option>-->
-<!--        </select>-->
-<!--        <input type="submit" name="submit_btn" value="Отправить">-->
-<!--    </form>-->
-<!--</div>-->
 
 <div class="tables">
     <div id="mon" class="timetables" style="display:none">

@@ -26,7 +26,7 @@ export function Clock() {
     ];
     const n = date.getDay();
 
-    // setInterval(updateClock, 1000);
+    setInterval(updateClock, 1000);
 
     return (
         <div>

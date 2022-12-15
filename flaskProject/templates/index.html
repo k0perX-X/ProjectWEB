@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <link rel="stylesheet" href="../static/styles.css">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<script>
+    $(function () {
+        $("#" + $("#select option:selected").val()).show();
+        $("#day-selecter").change(function () {
+            $(".timetables").hide();
+            $("#" + $(this).val()).show();
+        });
+    });
+</script>
+
+<h1>
+    Базовое расписание на 2 модуль
+</h1>
+
+<div id="react-root"></div>
+
+<div class="select">
+    <label for="day-selecter" class="day">
+        Выберите день недели:
+    </label>
+    <select id="day-selecter">
+        <option class="day-option">Выберите вариант</option>
+        <option class="day-option" value="mon">Понедельник</option>
+        <option class="day-option" value="tue">Вторник</option>
+        <option class="day-option" value="wed">Среда</option>
+        <option class="day-option" value="thu">Четверг</option>
+        <option class="day-option" value="fri">Пятница</option>
+        <option class="day-option" value="sat">Суббота</option>
+        <option class="day-option" value="all">Все дни</option>
+    </select>
+</div>
+
+<script defer type="text/babel">
+    class Clock extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {date: new Date()}; // изначальное сотояние
+        }
+
+        handleClick = () => {
+            this.setState({date: new Date()}); // изменение состояния
+            setInterval(this.handleClick, 1000);
+        }
+
+        render() {
+            const days = [
+                'Воскресенье',
+                'Понедельник',
+                'Вторник',
+                'Среда',
+                'Четверг',
+                'Пятница',
+                'Суббота'
+            ];
+            const n = this.state.date.getDay(); // получение данных о состоянии
+            setInterval(this.handleClick, 1000);
+            return (
+                <div>
+                    <p>
+                        Сегодня: {days[n]}.
+                    </p>
+                    <p>
+                        Текущее время: {this.state.date.toLocaleTimeString()}
+                    </p>
+                </div>);
+        }
+    }
+
+    const mountNode = document.getElementById('react-root');
+    const root = ReactDOM.createRoot(mountNode);
+    root.render(<Clock/>); // рендер
+</script>
+
+<div class="tables">
+    {% for day in days %}
+        <div id="{{ day['name_id'] }}" class="timetables" style="display:none">
+            <table class="timetable">
+                <caption>{{ day['name'] }}</caption>
+                <tr>
+                    <th>Время</th>
+                    <th>Предмет</th>
+                    <th>Кабинет</th>
+                </tr>
+                {% for lesson in day['lessons'] %}
+                    <tr>
+                        <td>{{ lesson.time }}</td>
+                        <td>{{ lesson.name }}</td>
+                        <td>{{ lesson.audience }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    {% endfor %}
+    <div id="all" class="timetables" style="display:none">
+        <div class="all-timetables">
+            {% for day in days %}
+                <div id="{{ day['name_id'] }}" class="timetables">
+                    <table class="timetable">
+                        <caption>{{ day['name'] }}</caption>
+                        <tr>
+                            <th>Время</th>
+                            <th>Предмет</th>
+                            <th>Кабинет</th>
+                        </tr>
+                        {% for lesson in days['lessons'] %}
+                            <tr>
+                                <td>{{ lesson.time }}</td>
+                                <td>{{ lesson.name }}</td>
+                                <td>{{ lesson.audience }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
