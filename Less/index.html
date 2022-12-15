@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Less</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <link rel="stylesheet/less" type="text/css" href="styles.less" />
+    <script src="https://cdn.jsdelivr.net/npm/less"></script>
+</head>
+<body>
+<!-- NAV #1 и HEADER -->
+<div class="top">
+    <div class="container">
+        <div class="row">
+            <!-- NAV #1 -->
+            <nav class="col-md-6 col-xl-12 order-md-1 order-xl-0">
+                <nav class="navbar navbar-light light-blue lighten-4">
+
+                    <!-- Navbar brand -->
+                    <a class="navbar-brand" href="#">K0per</a>
+
+                    <!-- Collapse button -->
+                    <button class="navbar-toggler toggler-example"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#navbarSupportedContent1"
+                            aria-controls="navbarSupportedContent1"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="dark-blue-text">
+                            <i class="fas fa-bars fa-1x"></i>
+                        </span>
+                    </button>
+
+                    <!-- Collapsible content -->
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+
+                        <!-- Links -->
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Home \<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Features</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Pricing</a>
+                            </li>
+                        </ul>
+                        <!-- Links -->
+
+                    </div>
+                    <!-- Collapsible content -->
+
+                </nav>
+                <!--/.Navbar-->
+            </nav>
+            <!-- HEADER -->
+            <header class="col-md-6 col-xl-12 order-md-0 order-xl-1">
+                <h1>
+                    Базовое расписание на 2 модуль
+                </h1>
+            </header>
+        </div>
+    </div>
+</div>
+<!-- ОСНОВНОЙ КОНТЕНТ -->
+<main>
+    <div class="container">
+        <div class="row">
+            <!-- NAV #2 -->
+            <nav class="col-xl-2">
+                <div class="select">
+                    <label for="day-selecter" class="day">
+                        Выберите день недели:
+                    </label>
+                    <select id="day-selecter">
+                        <option class="day-option">Выберите вариант</option>
+                        <option class="day-option" value="mon">Понедельник</option>
+                        <option class="day-option" value="tue">Вторник</option>
+                        <option class="day-option" value="wed">Среда</option>
+                        <option class="day-option" value="thu">Четверг</option>
+                        <option class="day-option" value="fri">Пятница</option>
+                        <option class="day-option" value="sat">Суббота</option>
+                        <option class="day-option" value="all">Все дни</option>
+                    </select>
+                </div>
+            </nav>
+            <!-- ARTICLE -->
+            <article class="col-md-8 col-xl-7">
+                <div class="tables">
+                    <div id="mon" class="timetables" style="display:none">
+                        <table class="timetable">
+                            <caption>Понедельник</caption>
+                            <tr>
+                                <th>Время</th>
+                                <th>Предмет</th>
+                                <th>Кабинет</th>
+                            </tr>
+                            <tr>
+                                <td>8:10</td>
+                                <td>Машинное обучение (лекция)</td>
+                                <td>124[2]</td>
+                            </tr>
+                            <tr>
+                                <td>9:40</td>
+                                <td>Груп. динамика и коммуник. в проф.практике прогр. инж</td>
+                                <td>510[3]</td>
+                            </tr>
+                            <tr>
+                                <td>13:10</td>
+                                <td>Машинное обучение (практика)</td>
+                                <td>504[3]</td>
+                            </tr>
+                            <tr>
+                                <td>15:00</td>
+                                <td>Обеспечение качества и тестирование</td>
+                                <td>504[3]</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="tue" class="timetables" style="display:none">
+                        <table class="timetable">
+                            <caption>Вторник</caption>
+                            <tr>
+                                <th>Время</th>
+                                <th>Предмет</th>
+                                <th>Кабинет</th>
+                            </tr>
+                            <tr>
+                                <td>8:10</td>
+                                <td>Обеспечение качества и тестирование</td>
+                                <td>102[3]</td>
+                            </tr>
+                            <tr>
+                                <td>9:40</td>
+                                <td>НИС "Разработка мобильных приложений"</td>
+                                <td>504[3]</td>
+                            </tr>
+                            <tr>
+                                <td>16:40</td>
+                                <td>НИС "Аналитика в IoT"</td>
+                                <td>дист.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="wed" class="timetables" style="display:none">
+                        <table class="timetable">
+                            <caption>Среда</caption>
+                            <tr>
+                                <th>Время</th>
+                                <th>Предмет</th>
+                                <th>Кабинет</th>
+                            </tr>
+                            <tr>
+                                <td>9:40</td>
+                                <td>Обеспечение качества и тестирование</td>
+                                <td>510[3]</td>
+                            </tr>
+                            <tr>
+                                <td>11:30</td>
+                                <td>Груп. динамика и коммуник. в проф.практике прогр. инж</td>
+                                <td>102[3]</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="thu" class="timetables" style="display:none">
+                        <table class="timetable">
+                            <caption>Четверг</caption>
+                            <tr>
+                                <th>Время</th>
+                                <th>Предмет</th>
+                                <th>Кабинет</th>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>МАЙНОР</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="fri" class="timetables" style="display:none">
+                        <table class="timetable">
+                            <caption>Пятница</caption>
+                            <tr>
+                                <th>Время</th>
+                                <th>Предмет</th>
+                                <th>Кабинет</th>
+                            </tr>
+                            <tr>
+                                <td>9:40</td>
+                                <td>Web-программирование (практ.) (МКД)</td>
+                                <td>дист.</td>
+                            </tr>
+                            <tr>
+                                <td>11:30</td>
+                                <td>Web-программирование (лекция) (МКД)</td>
+                                <td>дист.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="sat" class="timetables" style="display:none">
+                        <table class="timetable">
+                            <caption>Суббота</caption>
+                            <tr>
+                                <th>Время</th>
+                                <th>Предмет</th>
+                                <th>Кабинет</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="all" class="timetables" style="display:none">
+                        <div class="all-timetables">
+                            <table class="timetable">
+                                <caption>Понедельник</caption>
+                                <tr>
+                                    <th>Время</th>
+                                    <th>Предмет</th>
+                                    <th>Кабинет</th>
+                                </tr>
+                                <tr>
+                                    <td>8:10</td>
+                                    <td>Машинное обучение (лекция)</td>
+                                    <td>124[2]</td>
+                                </tr>
+                                <tr>
+                                    <td>9:40</td>
+                                    <td>Груп. динамика и коммуник. в проф.практике прогр. инж</td>
+                                    <td>510[3]</td>
+                                </tr>
+                                <tr>
+                                    <td>13:10</td>
+                                    <td>Машинное обучение (практика)</td>
+                                    <td>504[3]</td>
+                                </tr>
+                                <tr>
+                                    <td>15:00</td>
+                                    <td>Обеспечение качества и тестирование</td>
+                                    <td>504[3]</td>
+                                </tr>
+                            </table>
+                            <table class="timetable">
+                                <caption>Вторник</caption>
+                                <tr>
+                                    <th>Время</th>
+                                    <th>Предмет</th>
+                                    <th>Кабинет</th>
+                                </tr>
+                                <tr>
+                                    <td>8:10</td>
+                                    <td>Обеспечение качества и тестирование</td>
+                                    <td>102[3]</td>
+                                </tr>
+                                <tr>
+                                    <td>9:40</td>
+                                    <td>НИС "Разработка мобильных приложений"</td>
+                                    <td>504[3]</td>
+                                </tr>
+                                <tr>
+                                    <td>16:40</td>
+                                    <td>НИС "Аналитика в IoT"</td>
+                                    <td>дист.</td>
+                                </tr>
+                            </table>
+                            <table class="timetable">
+                                <caption>Среда</caption>
+                                <tr>
+                                    <th>Время</th>
+                                    <th>Предмет</th>
+                                    <th>Кабинет</th>
+                                </tr>
+                                <tr>
+                                    <td>9:40</td>
+                                    <td>Обеспечение качества и тестирование</td>
+                                    <td>510[3]</td>
+                                </tr>
+                                <tr>
+                                    <td>11:30</td>
+                                    <td>Груп. динамика и коммуник. в проф.практике прогр. инж</td>
+                                    <td>102[3]</td>
+                                </tr>
+                            </table>
+                            <table class="timetable">
+                                <caption>Четверг</caption>
+                                <tr>
+                                    <th>Время</th>
+                                    <th>Предмет</th>
+                                    <th>Кабинет</th>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>МАЙНОР</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            <table class="timetable">
+                                <caption>Пятница</caption>
+                                <tr>
+                                    <th>Время</th>
+                                    <th>Предмет</th>
+                                    <th>Кабинет</th>
+                                </tr>
+                                <tr>
+                                    <td>9:40</td>
+                                    <td>Web-программирование (практ.) (МКД)</td>
+                                    <td>дист.</td>
+                                </tr>
+                                <tr>
+                                    <td>11:30</td>
+                                    <td>Web-программирование (лекция) (МКД)</td>
+                                    <td>дист.</td>
+                                </tr>
+                            </table>
+                            <table class="timetable">
+                                <caption>Суббота</caption>
+                                <tr>
+                                    <th>Время</th>
+                                    <th>Предмет</th>
+                                    <th>Кабинет</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <!-- ASIDE -->
+            <aside class="col-md-4 col-xl-3">
+                <div id="react-root"></div>
+            </aside>
+        </div>
+    </div>
+</main>
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <h6>Перминов Николай Александрович</h6>
+        <p>ПИ-20-2</p>
+    </div>
+</footer>
+
+<script defer type="text/babel">
+    class Clock extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {date: new Date()}; // изначальное сотояние
+        }
+
+        handleClick = () => {
+            this.setState({date: new Date()}); // изменение состояния
+        }
+
+        render() {
+            const days = [
+                'Воскресенье',
+                'Понедельник',
+                'Вторник',
+                'Среда',
+                'Четверг',
+                'Пятница',
+                'Суббота'
+            ];
+            const n = this.state.date.getDay(); // получение данных о состоянии
+            setInterval(this.handleClick, 1000);
+            return (
+                <div>
+                    <p>
+                        Сегодня: {days[n]}.
+                    </p>
+                    <p>
+                        Текущее время: {this.state.date.toLocaleTimeString()}
+                    </p>
+                </div>);
+        }
+    }
+
+    const mountNode = document.getElementById('react-root');
+    const root = ReactDOM.createRoot(mountNode);
+    root.render(<Clock/>); // рендер
+</script>
+<script>
+    $(function () {
+        $("#" + $("#select option:selected").val()).show();
+        $("#day-selecter").change(function () {
+            $(".timetables").hide();
+            $("#" + $(this).val()).show();
+        });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</body>
+</html>
