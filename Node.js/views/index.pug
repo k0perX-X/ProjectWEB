@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  script.
+    var hidden = true
+    var f1 = function (){
+      if (hidden){
+        document.getElementById('all').style.setProperty('display', 'grid')
+      } else {
+        document.getElementById('all').style.setProperty('display', 'none')
+      }
+      hidden = !hidden
+    }
+
+  button(onclick='f1()') Показать/скрыть
+
+  | !{timetable}
