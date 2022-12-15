@@ -54,10 +54,29 @@ caption {
 }
 
 .select {
-    display: flex;
+    display: grid;
 }
 
 .all-timetables {
     display: grid;
     grid-template-columns: 50% 50%;
+}
+
+.fa-1x {
+    font-size: 1.5rem;
+}
+.navbar-toggler.toggler-example {
+    cursor: pointer;
+}
+.dark-blue-text {
+    color: #0A38F5;
+}
+.dark-pink-text {
+    color: #AC003A;
+}
+.dark-amber-text {
+    color: #ff6f00;
+}
+.dark-teal-text {
+    color: #004d40;
 }

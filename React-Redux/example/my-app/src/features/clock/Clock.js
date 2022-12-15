@@ -12,7 +12,6 @@ export function Clock() {
 
     const updateClock = () => {
         dispatch(newDate()) // изменение состояния
-        setInterval(updateClock, 1000);
     };
 
     const days = [
